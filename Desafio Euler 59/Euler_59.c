@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 #include "cripto.h"
 
 void realoc(char *vetor, int tamanho) {
@@ -17,16 +18,19 @@ void realoc(char *vetor, int tamanho) {
 
 int main() {
 	FILE *arquivo = NULL;
-	char *chave, *str, *criptografado;
+	char *str, *criptografado, *decriptografado;
+	unsigned char *chave;
 	char c;
 	int i = 0, num_char = 0, tamanho_vetor = 1;
 
 	arquivo = fopen("p059_cipher.txt","r");
-	chave = malloc(3 * sizeof(char));
+	chave = malloc(3 * sizeof(unsigned char));
 	str = malloc(3 * sizeof(char));
 	criptografado = malloc(1 * sizeof(char));
-	gera_chave(chave, 0);
-	
+	for (i = 0; i < (26*26*26); i++) {
+		gera_chave(chave, i);
+		printf("%c%c%c\n", chave[0], chave[1], chave[2]);
+	}
 	while ((c = fgetc(arquivo)) != EOF) {
 		if (c != ',' && i < 3) {
 			str[i] = c;
@@ -45,9 +49,13 @@ int main() {
 			i = 0;
 		}
 	}
+	decriptografado = malloc (num_char * sizeof(char));
 	for (i = 0; i < num_char; i++) {
-		printf("%d\n", criptografado[i]);
+		decriptografado[i] = chave[i%3]^criptografado[i];
+		/*printf("%c", decriptografado[i]);*/
 	}
+	printf("\n");
 	free(chave);
+	free(decriptografado);
 	return 0;
 }

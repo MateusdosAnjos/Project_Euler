@@ -7,21 +7,18 @@ int potencia(int x, int y) {
 
 
 	for (i = 0; i < y; i++) {
-		resultado *= resultado*x;
+		resultado *= x;
 	}
 	return resultado;
 }
 
 void gera_chave(unsigned char *chave, int num_chave) {
 	int i;
-	long double j;
 	
 	if (chave == NULL) return;
 	for (i = 0; i < 3; i++) {
 		chave[i] = 'a';
-		j = (double)(num_chave/potencia(26, i));
-		j = ceil(j);
-		chave[i] += (int)(j) % 26;
+		chave[i] += (num_chave/potencia(26, i)) % 26;
 	}
 	return;
 }

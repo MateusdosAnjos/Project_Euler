@@ -23,6 +23,10 @@ void gera_chave(unsigned char *chave, int num_chave) {
 	return;
 }
 
-unsigned int str_to_dec(char *str, int i) {
-	return atoi(str);
+int provavel_chave(char *decriptografado) {
+	return 0;
+}
+
+int calcula_soma(char *decriptografado) {
+	return 0;
 }

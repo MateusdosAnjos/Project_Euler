@@ -2,6 +2,7 @@
 #define _H_CRIPTO
 
 void gera_chave(unsigned char *chave, int num_chave);
-unsigned int str_to_dec(char *str, int i);
+int provavel_chave(char *decriptografado);
+int calcula_soma(char *decriptografado);
 
 #endif

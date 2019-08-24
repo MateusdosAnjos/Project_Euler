@@ -23,10 +23,12 @@ void gera_chave(unsigned char *chave, int num_chave) {
 	return;
 }
 
+/*Falta implementar a heuristica para julgar uma chave*/
 int provavel_chave(char *decriptografado) {
 	return 0;
 }
 
+/*Somar todos os decimais da solucao*/
 int calcula_soma(char *decriptografado) {
 	return 0;
 }
